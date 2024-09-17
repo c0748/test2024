@@ -10,12 +10,13 @@ source_ws = source_wb.active
 new_wb = Workbook()
 new_ws = new_wb.active
 # 転記先の表のヘッダーを設定
-new_ws.append(["ID", "スタート時間", "終了時間", "サイクルタイム"])
+new_ws.append(["ID", "スタート時間", "終了時間", "サイクルタイム", "日付"])
 # データを転記
 row_id = 1
-for i in range(1, source_ws.max_row + 1, 4):
+for i in range(1, source_ws.max_row + 1, 5):
     start_time = source_ws.cell(row=i, column=2).value
     end_time = source_ws.cell(row=i + 3, column=2).value
+    cycle_date = source_ws.cell(row=i, column=3).value
 
     # Convert the start_time and end_time to seconds since midnight
     # 時間を秒に変換する
@@ -34,7 +35,7 @@ for i in range(1, source_ws.max_row + 1, 4):
     cycle_time = f"{minutes}:{seconds:02}"
 
     # Add to the new worksheet
-    new_ws.append([row_id, start_time, end_time, cycle_time])
+    new_ws.append([row_id, start_time, end_time, cycle_time, cycle_date])
     row_id += 1
 # 新しいファイルに保存
 new_output_path = "files/colored_sequence_PLOT3.xlsx"
