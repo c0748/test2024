@@ -29,6 +29,7 @@ def show_cycle_info():
     # input_timeをtimedelta（分）として扱い、経過時間から引く
     adjusted_time = elapsed_minutes - timedelta(minutes=stop_minutes)
     print(adjusted_time)
+    # 経過時間を秒に換算する
     elapsed_seconds = adjusted_time.total_seconds()
     # 稼働時間を standard_entry で割る
     result = elapsed_seconds / standard_time
@@ -85,12 +86,12 @@ Label(root, text="日付を入力してください:", font=("Arial", 16)).pack(
 name_entry = Entry(root, font=("Arial", 14))
 name_entry.pack(padx=20, pady=10)
 
-Label(root, text="停止時間を入力してください:", font=("Arial", 16)).pack(padx=20, pady=10)
+Label(root, text="停止時間を入力してください（分）:", font=("Arial", 16)).pack(padx=20, pady=10)
 time_entry = Entry(root, font=("Arial", 14))
 time_entry.pack(padx=20, pady=10)
 
 
-Label(root, text="基準サイクルタイムを入力してください:", font=("Arial", 16)).pack(padx=20, pady=10)
+Label(root, text="基準サイクルタイムを入力してください（秒）:", font=("Arial", 16)).pack(padx=20, pady=10)
 standard_entry = Entry(root, font=("Arial", 14))
 standard_entry.pack(padx=20, pady=10)
 
