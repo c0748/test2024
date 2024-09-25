@@ -6,7 +6,7 @@ ws = wb.active
 
 # ユーザーから日付を入力してもらう
 input_date = input("日付を入力してください (例: 2024/08/31): ")
-print(type(input_date))
+# print(type(input_date))
 
 # #1 入力された日付のデータを抽出
 date_filter = []
@@ -19,7 +19,8 @@ for row in ws.iter_rows(min_row=2, values_only=True):
         count += 1
 
 
-print(date_filter)
+# print(date_filter)
+
 
 # サイクルタイムを秒に変換する関数
 def time_to_seconds(time_str):
@@ -41,7 +42,7 @@ average_cycle_time = sum(cycle_times) / len(cycle_times)
 
 # 結果を表示
 print(f"#1 入力された日付のデータ:\n{input_date}")
-print(f"#2 行数: {count}")
+print(f"#2 サイクル数: {count}")
 print(f"#3 最大サイクルタイム: {max_cycle_time // 60}分{max_cycle_time % 60}秒")
 print(f"#4 最小サイクルタイム: {min_cycle_time // 60}分{min_cycle_time % 60}秒")
 print(f"#5 平均サイクルタイム: {average_cycle_time // 60:.0f}分{average_cycle_time % 60:.0f}秒")
