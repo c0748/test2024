@@ -189,9 +189,14 @@ def step3():
     root = tk.Tk()
     root.title("サイクル情報表示")
 
+    # 現在の日付を取得
+    today_date = datetime.now().strftime("%Y/%m/%d")
+
     # 日付入力フィールド
     Label(root, text="検索したい日付を入力してください:", font=("Arial", 16)).pack(padx=20, pady=10)
     name_entry = Entry(root, font=("Arial", 14))
+    # insert で画面を開いたときに今日の日付を代入する
+    name_entry.insert(0, today_date)
     name_entry.pack(padx=20, pady=10)
 
     Label(root, text="停止時間を入力してください（分）:", font=("Arial", 16)).pack(padx=20, pady=10)
