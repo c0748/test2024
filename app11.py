@@ -1,6 +1,10 @@
-# PLOT用.xlsxを使って正常サイクルに色を付ける
-# 色を付けたファイルをcolored_sequence_PLOT.xlsx保存する
-# 正常サイクルだけを抜き出したファイルをcolored_sequence_PLOT2保存する
+# step1 PLOT用.xlsxを使って正常サイクルに色を付ける
+#     色を付けたファイルをcolored_sequence_PLOT.xlsx保存する
+#     正常サイクルだけを抜き出したファイルをcolored_sequence_PLOT2保存する
+#     サイクルタイム
+# step2 colored_sequence_PLOT2.xlsxを使って開始時間終了時間CTタイムの一覧表を作成する
+#      colored_sequence_PLOT3
+# step3 colored_sequence_PLOT3を使って画面から日付検索して表示する
 
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
@@ -85,9 +89,9 @@ def step2():
     new_ws = new_wb.active
     # 転記先の表のヘッダーを設定
     new_ws.append(["ID", "スタート時間", "終了時間", "サイクルタイム", "日付"])
-    # データを転記
+    # データを転記する巻１の時間を開始時間と切2‐1の時間を終了時間にする
     row_id = 1
-    for i in range(1, source_ws.max_row + 1, 5):
+    for i in range(1, source_ws.max_row + 1, 4):
         start_time = source_ws.cell(row=i, column=2).value
         end_time = source_ws.cell(row=i + 3, column=2).value
         cycle_date = source_ws.cell(row=i, column=3).value
@@ -97,7 +101,7 @@ def step2():
         start_seconds = start_time.hour * 3600 + start_time.minute * 60 + start_time.second
         end_seconds = end_time.hour * 3600 + end_time.minute * 60 + end_time.second
 
-        # Calculate the difference in seconds
+        # サイクルタイムの計算をする秒[終了時間-開始時間]
         time_difference_seconds = end_seconds - start_seconds
 
         # 差がマイナス表示の時は
