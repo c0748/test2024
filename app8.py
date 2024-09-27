@@ -31,7 +31,7 @@ def show_cycle_info():
     print(adjusted_time)
     # 経過時間を秒に換算する
     elapsed_seconds = adjusted_time.total_seconds()
-    # 稼働時間を standard_entry で割る
+    # 稼働時間を standard_timeで割る
     result = elapsed_seconds / standard_time
 
     # #1 入力された日付のデータを抽出
@@ -82,7 +82,7 @@ root.title("サイクル情報表示")
 
 
 # 日付入力フィールド
-Label(root, text="日付を入力してください:", font=("Arial", 16)).pack(padx=20, pady=10)
+Label(root, text="検索したい日付を入力してください:", font=("Arial", 16)).pack(padx=20, pady=10)
 name_entry = Entry(root, font=("Arial", 14))
 name_entry.pack(padx=20, pady=10)
 
