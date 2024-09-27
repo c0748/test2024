@@ -1,3 +1,7 @@
+# PLOT用.xlsxを使って正常サイクルに色を付ける
+# 色を付けたファイルをcolored_sequence_PLOT.xlsx保存する
+# 正常サイクルだけを抜き出したファイルをcolored_sequence_PLOT2保存する
+
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import openpyxl
@@ -29,7 +33,7 @@ for row in range(2, ws.max_row + 1):
 # 各日付ごとに処理を実行
 for date, rows in date_groups.items():
     row_idx = 0
-    while row_idx <= len(rows) - 4:  # 最低4行あるか確認
+    while row_idx <= len(rows) - 4:  # 最低3行あるか確認
         # 4行のシーケンスを取得
         current_sequence = [ws.cell(row=rows[row_idx + i], column=1).value for i in range(4)]
 
@@ -55,10 +59,10 @@ for date, rows in date_groups.items():
         # 次の4行を確認
         row_idx += 1
 
-# 修正したファイルを保存
+# 色を付けたファイルを保存する
 output_path = "files/colored_sequence_PLOT.xlsx"
 wb.save(output_path)
 
-# 新しいファイルを保存
+# シーケンスに一致した行だけを抜き出してファイル保存する
 new_output_path = "files/colored_sequence_PLOT2.xlsx"
 new_wb.save(new_output_path)

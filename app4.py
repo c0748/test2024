@@ -1,3 +1,6 @@
+#このファイルは使わない
+# app10.pyに改訂済み
+
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import openpyxl
